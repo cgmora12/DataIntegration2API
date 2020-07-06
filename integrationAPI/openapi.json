@@ -1,0 +1,325 @@
+{
+  "components" : {
+    "schemas" : {
+      "mainComponent" : {
+        "xml" : {
+          "name" : "mainComponent"
+        },
+        "type" : "object",
+        "properties" : {
+          "date_of_interest_date" : {
+            "type" : "string",
+            "example" : "02/29/2020"
+          },
+          "case_count_cases_total" : {
+            "type" : "integer",
+            "example" : 1
+          },
+          "death_count_deaths_total" : {
+            "type" : "integer",
+            "example" : 0
+          }
+        }
+      }
+    }
+  },
+  "servers" : [ {
+    "url" : "http://localhost:8080"
+  } ],
+  "openapi" : "3.0.0",
+  "paths" : {
+    "/visualisation" : {
+      "get" : {
+        "summary" : "GET visualisation charts",
+        "operationId" : "getvisualisation",
+        "description" : "Get visualisation charts of the data",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "text/html" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        },
+        "parameters" : [ {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "query",
+          "name" : "limit",
+          "description" : "Maximum number of results",
+          "example" : "10000"
+        }, {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "query",
+          "name" : "offset",
+          "description" : "Starting index for results",
+          "example" : "0"
+        } ]
+      }
+    },
+    "/case_count_cases_total/{case_count_cases_total}" : {
+      "get" : {
+        "summary" : "GET case_count_cases_total",
+        "operationId" : "getcase_count_cases_total",
+        "description" : "Use value 'all' in a parameter for non-empty values",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "text/html" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/mainComponent"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters" : [ {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "query",
+          "name" : "limit",
+          "description" : "Maximum number of results",
+          "example" : "10000"
+        }, {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "query",
+          "name" : "offset",
+          "description" : "Starting index for results",
+          "example" : "0"
+        }, {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "visualisation",
+          "description" : "Visualisation of the data via charts"
+        }, {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "path",
+          "name" : "case_count_cases_total",
+          "description" : "case_count_cases_total",
+          "required" : true,
+          "example" : "1"
+        } ]
+      }
+    },
+    "/date_of_interest_date/{date_of_interest_date}" : {
+      "get" : {
+        "summary" : "GET date_of_interest_date",
+        "operationId" : "getdate_of_interest_date",
+        "description" : "Use value 'all' in a parameter for non-empty values",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "text/html" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/mainComponent"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters" : [ {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "query",
+          "name" : "limit",
+          "description" : "Maximum number of results",
+          "example" : "10000"
+        }, {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "query",
+          "name" : "offset",
+          "description" : "Starting index for results",
+          "example" : "0"
+        }, {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "visualisation",
+          "description" : "Visualisation of the data via charts"
+        }, {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "path",
+          "name" : "date_of_interest_date",
+          "description" : "date_of_interest_date",
+          "required" : true,
+          "example" : "02/29/2020"
+        } ]
+      }
+    },
+    "/death_count_deaths_total/{death_count_deaths_total}" : {
+      "get" : {
+        "summary" : "GET death_count_deaths_total",
+        "operationId" : "getdeath_count_deaths_total",
+        "description" : "Use value 'all' in a parameter for non-empty values",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "text/html" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/mainComponent"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters" : [ {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "query",
+          "name" : "limit",
+          "description" : "Maximum number of results",
+          "example" : "10000"
+        }, {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "query",
+          "name" : "offset",
+          "description" : "Starting index for results",
+          "example" : "0"
+        }, {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "visualisation",
+          "description" : "Visualisation of the data via charts"
+        }, {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "path",
+          "name" : "death_count_deaths_total",
+          "description" : "death_count_deaths_total",
+          "required" : true,
+          "example" : "0"
+        } ]
+      }
+    },
+    "/" : {
+      "get" : {
+        "summary" : "GET COVIDminus19_Daily_Counts_of_Cases__Hospitalizations__and_DeathscsvCOVIDminus19_Hospital_Capacity_MetricscsvCOVIDminus19_Daily_Cases_and_Deathscsvcsv",
+        "operationId" : "getCOVIDminus19_Daily_Counts_of_Cases__Hospitalizations__and_DeathscsvCOVIDminus19_Hospital_Capacity_MetricscsvCOVIDminus19_Daily_Cases_and_Deathscsvcsv",
+        "description" : "Use value 'all' in a parameter for non-empty values",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "text/html" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/mainComponent"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters" : [ {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "query",
+          "name" : "limit",
+          "description" : "Maximum number of results",
+          "example" : "10000"
+        }, {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "query",
+          "name" : "offset",
+          "description" : "Starting index for results",
+          "example" : "0"
+        }, {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "visualisation",
+          "description" : "Visualisation of the data via charts"
+        }, {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "query",
+          "name" : "death_count_deaths_total",
+          "description" : "death_count_deaths_total"
+        }, {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "query",
+          "name" : "case_count_cases_total",
+          "description" : "case_count_cases_total"
+        }, {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "date_of_interest_date",
+          "description" : "date_of_interest_date"
+        } ]
+      }
+    }
+  },
+  "info" : {
+    "description" : "Obtaining the COVIDminus19_Daily_Counts_of_Cases__Hospitalizations__and_DeathscsvCOVIDminus19_Hospital_Capacity_MetricscsvCOVIDminus19_Daily_Cases_and_Deathscsvcsv",
+    "title" : "COVIDminus19_Daily_Counts_of_Cases__Hospitalizations__and_DeathscsvCOVIDminus19_Hospital_Capacity_MetricscsvCOVIDminus19_Daily_Cases_and_Deathscsvcsv",
+    "version" : "1.0.0"
+  }
+}

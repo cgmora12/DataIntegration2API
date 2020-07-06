@@ -1,0 +1,213 @@
+---
+swagger: "2.0"
+info:
+  description: "Obtaining the COVIDminus19_Daily_Counts_of_Cases__Hospitalizations__and_DeathscsvCOVIDminus19_Hospital_Capacity_MetricscsvCOVIDminus19_Daily_Cases_and_Deathscsvcsv"
+  version: "1.0.0"
+  title: "COVIDminus19_Daily_Counts_of_Cases__Hospitalizations__and_DeathscsvCOVIDminus19_Hospital_Capacity_MetricscsvCOVIDminus19_Daily_Cases_and_Deathscsvcsv"
+host: "localhost:8080"
+basePath: "/"
+schemes:
+- "http"
+paths:
+  /:
+    get:
+      summary: "GET COVIDminus19_Daily_Counts_of_Cases__Hospitalizations__and_DeathscsvCOVIDminus19_Hospital_Capacity_MetricscsvCOVIDminus19_Daily_Cases_and_Deathscsvcsv"
+      description: "Use value 'all' in a parameter for non-empty values"
+      operationId: "getCOVIDminus19_Daily_Counts_of_Cases__Hospitalizations__and_DeathscsvCOVIDminus19_Hospital_Capacity_MetricscsvCOVIDminus19_Daily_Cases_and_Deathscsvcsv"
+      produces:
+      - "application/json"
+      - "text/html"
+      parameters:
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of results"
+        required: false
+        type: "integer"
+        default: 10000
+      - name: "offset"
+        in: "query"
+        description: "Starting index for results"
+        required: false
+        type: "integer"
+        default: 0
+      - name: "visualisation"
+        in: "query"
+        description: "Visualisation of the data via charts"
+        required: false
+        type: "string"
+      - name: "death_count_deaths_total"
+        in: "query"
+        description: "death_count_deaths_total"
+        required: false
+        type: "integer"
+      - name: "case_count_cases_total"
+        in: "query"
+        description: "case_count_cases_total"
+        required: false
+        type: "integer"
+      - name: "date_of_interest_date"
+        in: "query"
+        description: "date_of_interest_date"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Default"
+  /case_count_cases_total/{case_count_cases_total}:
+    get:
+      summary: "GET case_count_cases_total"
+      description: "Use value 'all' in a parameter for non-empty values"
+      operationId: "getcase_count_cases_total"
+      produces:
+      - "application/json"
+      - "text/html"
+      parameters:
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of results"
+        required: false
+        type: "integer"
+        default: 10000
+      - name: "offset"
+        in: "query"
+        description: "Starting index for results"
+        required: false
+        type: "integer"
+        default: 0
+      - name: "visualisation"
+        in: "query"
+        description: "Visualisation of the data via charts"
+        required: false
+        type: "string"
+      - name: "case_count_cases_total"
+        in: "path"
+        description: "case_count_cases_total"
+        required: true
+        type: "integer"
+        default: 1
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Default"
+  /date_of_interest_date/{date_of_interest_date}:
+    get:
+      summary: "GET date_of_interest_date"
+      description: "Use value 'all' in a parameter for non-empty values"
+      operationId: "getdate_of_interest_date"
+      produces:
+      - "application/json"
+      - "text/html"
+      parameters:
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of results"
+        required: false
+        type: "integer"
+        default: 10000
+      - name: "offset"
+        in: "query"
+        description: "Starting index for results"
+        required: false
+        type: "integer"
+        default: 0
+      - name: "visualisation"
+        in: "query"
+        description: "Visualisation of the data via charts"
+        required: false
+        type: "string"
+      - name: "date_of_interest_date"
+        in: "path"
+        description: "date_of_interest_date"
+        required: true
+        type: "string"
+        default: "02/29/2020"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Default"
+  /death_count_deaths_total/{death_count_deaths_total}:
+    get:
+      summary: "GET death_count_deaths_total"
+      description: "Use value 'all' in a parameter for non-empty values"
+      operationId: "getdeath_count_deaths_total"
+      produces:
+      - "application/json"
+      - "text/html"
+      parameters:
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of results"
+        required: false
+        type: "integer"
+        default: 10000
+      - name: "offset"
+        in: "query"
+        description: "Starting index for results"
+        required: false
+        type: "integer"
+        default: 0
+      - name: "visualisation"
+        in: "query"
+        description: "Visualisation of the data via charts"
+        required: false
+        type: "string"
+      - name: "death_count_deaths_total"
+        in: "path"
+        description: "death_count_deaths_total"
+        required: true
+        type: "integer"
+        default: 0
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Default"
+  /visualisation:
+    get:
+      summary: "GET visualisation charts"
+      description: "Get visualisation charts of the data"
+      operationId: "getvisualisation"
+      produces:
+      - "text/html"
+      parameters:
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of results"
+        required: false
+        type: "integer"
+        default: 10000
+      - name: "offset"
+        in: "query"
+        description: "Starting index for results"
+        required: false
+        type: "integer"
+        default: 0
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Default"
+definitions:
+  mainComponent:
+    type: "object"
+    properties:
+      date_of_interest_date:
+        type: "string"
+        example: "02/29/2020"
+      case_count_cases_total:
+        type: "integer"
+        example: 1
+      death_count_deaths_total:
+        type: "integer"
+        example: 0
+    xml:
+      name: "mainComponent"
