@@ -1,17 +1,17 @@
 ---
 swagger: "2.0"
 info:
-  description: "Obtaining the COVIDminus19_Daily_Counts_of_Cases__Hospitalizations__and_DeathscsvCOVIDminus19_Hospital_Capacity_MetricscsvCOVIDminus19_Daily_Cases_and_Deathscsvcsv"
+  description: "Obtaining the COVID19_Daily_Counts_of_Cases_Hospitalizations_and_Deaths_COVID19_Hospital_Capacity_Metrics_COVID19_Daily_Cases_and_Deathscsv"
   version: "1.0.0"
-  title: "COVIDminus19_Daily_Counts_of_Cases__Hospitalizations__and_DeathscsvCOVIDminus19_Hospital_Capacity_MetricscsvCOVIDminus19_Daily_Cases_and_Deathscsvcsv"
-host: "localhost:8080"
-basePath: "/"
+  title: "COVID19_Daily_Counts_of_Cases_Hospitalizations_and_Deaths_COVID19_Hospital_Capacity_Metrics_COVID19_Daily_Cases_and_Deathscsv"
+host: "wake.dlsi.ua.es"
+basePath: "/IntegrationAPI"
 schemes:
-- "http"
+- "https"
 paths:
   /:
     get:
-      summary: "GET COVIDminus19_Daily_Counts_of_Cases__Hospitalizations__and_DeathscsvCOVIDminus19_Hospital_Capacity_MetricscsvCOVIDminus19_Daily_Cases_and_Deathscsvcsv"
+      summary: "GET COVID19_Daily_Counts_of_Cases_Hospitalizations_and_Deaths_COVID19_Hospital_Capacity_Metrics_COVID19_Daily_Cases_and_Deathscsv"
       description: "Use value 'all' in a parameter for non-empty values"
       operationId: "getCOVIDminus19_Daily_Counts_of_Cases__Hospitalizations__and_DeathscsvCOVIDminus19_Hospital_Capacity_MetricscsvCOVIDminus19_Daily_Cases_and_Deathscsvcsv"
       produces:
