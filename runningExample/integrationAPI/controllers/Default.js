@@ -22,6 +22,14 @@ module.exports.getdeath_count_deaths_total = function getdeath_count_deaths_tota
   Default.getdeath_count_deaths_total(req.swagger.params, res, next);
 };
 
+module.exports.gethospitalized_count_ventilators_in_use_covid_19_patients = function gethospitalized_count_ventilators_in_use_covid_19_patients (req, res, next) {
+  Default.gethospitalized_count_ventilators_in_use_covid_19_patients(req.swagger.params, res, next);
+};
+
+module.exports.getpublisher_publisher = function getpublisher_publisher (req, res, next) {
+  Default.getpublisher_publisher(req.swagger.params, res, next);
+};
+
 module.exports.getvisualisation = function getvisualisation (req, res, next) {
   Default.getvisualisation(req.swagger.params, res, next);
 };

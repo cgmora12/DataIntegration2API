@@ -11,6 +11,10 @@
             "type" : "string",
             "example" : "02/29/2020"
           },
+          "hospitalized_count_ventilators_in_use_covid_19_patients" : {
+            "type" : "integer",
+            "example" : 11
+          },
           "case_count_cases_total" : {
             "type" : "integer",
             "example" : 1
@@ -18,6 +22,10 @@
           "death_count_deaths_total" : {
             "type" : "integer",
             "example" : 0
+          },
+          "publisher_publisher" : {
+            "type" : "string",
+            "example" : "City of New York"
           }
         }
       }
@@ -244,6 +252,126 @@
         } ]
       }
     },
+    "/hospitalized_count_ventilators_in_use_covid_19_patients/{hospitalized_count_ventilators_in_use_covid_19_patients}" : {
+      "get" : {
+        "summary" : "GET hospitalized_count_ventilators_in_use_covid_19_patients",
+        "operationId" : "gethospitalized_count_ventilators_in_use_covid_19_patients",
+        "description" : "Use value 'all' in a parameter for non-empty values",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "text/html" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/mainComponent"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters" : [ {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "query",
+          "name" : "limit",
+          "description" : "Maximum number of results",
+          "example" : "10000"
+        }, {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "query",
+          "name" : "offset",
+          "description" : "Starting index for results",
+          "example" : "0"
+        }, {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "visualisation",
+          "description" : "Visualisation of the data via charts"
+        }, {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "path",
+          "name" : "hospitalized_count_ventilators_in_use_covid_19_patients",
+          "description" : "hospitalized_count_ventilators_in_use_covid_19_patients",
+          "required" : true,
+          "example" : "11"
+        } ]
+      }
+    },
+    "/publisher_publisher/{publisher_publisher}" : {
+      "get" : {
+        "summary" : "GET publisher_publisher",
+        "operationId" : "getpublisher_publisher",
+        "description" : "Use value 'all' in a parameter for non-empty values",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "content" : {
+              "text/html" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/mainComponent"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters" : [ {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "query",
+          "name" : "limit",
+          "description" : "Maximum number of results",
+          "example" : "10000"
+        }, {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "query",
+          "name" : "offset",
+          "description" : "Starting index for results",
+          "example" : "0"
+        }, {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "visualisation",
+          "description" : "Visualisation of the data via charts"
+        }, {
+          "schema" : {
+            "type" : "string"
+          },
+          "in" : "path",
+          "name" : "publisher_publisher",
+          "description" : "publisher_publisher",
+          "required" : true,
+          "example" : "City of New York"
+        } ]
+      }
+    },
     "/" : {
       "get" : {
         "summary" : "GET COVIDminus19_Daily_Counts_of_Cases__Hospitalizations__and_DeathscsvCOVIDminus19_Hospital_Capacity_MetricscsvCOVIDminus19_Daily_Cases_and_Deathscsvcsv",
@@ -301,6 +429,13 @@
           "description" : "death_count_deaths_total"
         }, {
           "schema" : {
+            "type" : "string"
+          },
+          "in" : "query",
+          "name" : "publisher_publisher",
+          "description" : "publisher_publisher"
+        }, {
+          "schema" : {
             "type" : "integer"
           },
           "in" : "query",
@@ -313,6 +448,13 @@
           "in" : "query",
           "name" : "date_of_interest_date",
           "description" : "date_of_interest_date"
+        }, {
+          "schema" : {
+            "type" : "integer"
+          },
+          "in" : "query",
+          "name" : "hospitalized_count_ventilators_in_use_covid_19_patients",
+          "description" : "hospitalized_count_ventilators_in_use_covid_19_patients"
         } ]
       }
     }

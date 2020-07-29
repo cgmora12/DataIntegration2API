@@ -1,9 +1,9 @@
 ---
 swagger: "2.0"
 info:
-  description: "Obtaining the COVID19_Daily_Counts_of_Cases_Hospitalizations_and_Deaths_COVID19_Hospital_Capacity_Metrics_COVID19_Daily_Cases_and_Deathscsv"
+  description: "Obtaining the COVIDminus19_Daily_Counts_of_Cases__Hospitalizations__and_DeathscsvCOVIDminus19_Hospital_Capacity_MetricscsvCOVIDminus19_Daily_Cases_and_Deathscsvcsv"
   version: "1.0.0"
-  title: "COVID19_Daily_Counts_of_Cases_Hospitalizations_and_Deaths_COVID19_Hospital_Capacity_Metrics_COVID19_Daily_Cases_and_Deathscsv"
+  title: "COVIDminus19_Daily_Counts_of_Cases__Hospitalizations__and_DeathscsvCOVIDminus19_Hospital_Capacity_MetricscsvCOVIDminus19_Daily_Cases_and_Deathscsvcsv"
 host: "wake.dlsi.ua.es"
 basePath: "/IntegrationAPI"
 schemes:
@@ -11,7 +11,7 @@ schemes:
 paths:
   /:
     get:
-      summary: "GET COVID19_Daily_Counts_of_Cases_Hospitalizations_and_Deaths_COVID19_Hospital_Capacity_Metrics_COVID19_Daily_Cases_and_Deathscsv"
+      summary: "GET COVIDminus19_Daily_Counts_of_Cases__Hospitalizations__and_DeathscsvCOVIDminus19_Hospital_Capacity_MetricscsvCOVIDminus19_Daily_Cases_and_Deathscsvcsv"
       description: "Use value 'all' in a parameter for non-empty values"
       operationId: "getCOVIDminus19_Daily_Counts_of_Cases__Hospitalizations__and_DeathscsvCOVIDminus19_Hospital_Capacity_MetricscsvCOVIDminus19_Daily_Cases_and_Deathscsvcsv"
       produces:
@@ -40,6 +40,11 @@ paths:
         description: "death_count_deaths_total"
         required: false
         type: "integer"
+      - name: "publisher_publisher"
+        in: "query"
+        description: "publisher_publisher"
+        required: false
+        type: "string"
       - name: "case_count_cases_total"
         in: "query"
         description: "case_count_cases_total"
@@ -50,6 +55,11 @@ paths:
         description: "date_of_interest_date"
         required: false
         type: "string"
+      - name: "hospitalized_count_ventilators_in_use_covid_19_patients"
+        in: "query"
+        description: "hospitalized_count_ventilators_in_use_covid_19_patients"
+        required: false
+        type: "integer"
       responses:
         200:
           description: "successful operation"
@@ -170,6 +180,82 @@ paths:
           schema:
             type: "string"
       x-swagger-router-controller: "Default"
+  /hospitalized_count_ventilators_in_use_covid_19_patients/{hospitalized_count_ventilators_in_use_covid_19_patients}:
+    get:
+      summary: "GET hospitalized_count_ventilators_in_use_covid_19_patients"
+      description: "Use value 'all' in a parameter for non-empty values"
+      operationId: "gethospitalized_count_ventilators_in_use_covid_19_patients"
+      produces:
+      - "application/json"
+      - "text/html"
+      parameters:
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of results"
+        required: false
+        type: "integer"
+        default: 10000
+      - name: "offset"
+        in: "query"
+        description: "Starting index for results"
+        required: false
+        type: "integer"
+        default: 0
+      - name: "visualisation"
+        in: "query"
+        description: "Visualisation of the data via charts"
+        required: false
+        type: "string"
+      - name: "hospitalized_count_ventilators_in_use_covid_19_patients"
+        in: "path"
+        description: "hospitalized_count_ventilators_in_use_covid_19_patients"
+        required: true
+        type: "integer"
+        default: 11
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Default"
+  /publisher_publisher/{publisher_publisher}:
+    get:
+      summary: "GET publisher_publisher"
+      description: "Use value 'all' in a parameter for non-empty values"
+      operationId: "getpublisher_publisher"
+      produces:
+      - "application/json"
+      - "text/html"
+      parameters:
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of results"
+        required: false
+        type: "integer"
+        default: 10000
+      - name: "offset"
+        in: "query"
+        description: "Starting index for results"
+        required: false
+        type: "integer"
+        default: 0
+      - name: "visualisation"
+        in: "query"
+        description: "Visualisation of the data via charts"
+        required: false
+        type: "string"
+      - name: "publisher_publisher"
+        in: "path"
+        description: "publisher_publisher"
+        required: true
+        type: "string"
+        default: "City of New York"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
+      x-swagger-router-controller: "Default"
   /visualisation:
     get:
       summary: "GET visualisation charts"
@@ -203,11 +289,17 @@ definitions:
       date_of_interest_date:
         type: "string"
         example: "02/29/2020"
+      hospitalized_count_ventilators_in_use_covid_19_patients:
+        type: "integer"
+        example: 11
       case_count_cases_total:
         type: "integer"
         example: 1
       death_count_deaths_total:
         type: "integer"
         example: 0
+      publisher_publisher:
+        type: "string"
+        example: "City of New York"
     xml:
       name: "mainComponent"

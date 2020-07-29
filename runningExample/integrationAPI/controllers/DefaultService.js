@@ -379,6 +379,12 @@ exports.getdate_of_interest_date = function(args, res, next) {
 exports.getdeath_count_deaths_total = function(args, res, next) {
 	exports.getOperation(args, res, next); 
 }
+exports.gethospitalized_count_ventilators_in_use_covid_19_patients = function(args, res, next) {
+	exports.getOperation(args, res, next); 
+}
+exports.getpublisher_publisher = function(args, res, next) {
+	exports.getOperation(args, res, next); 
+}
 exports.getvisualisation = function(args, res, next) {
 	var obj = new Object();obj.value = "visualisation";args.visualisation = obj;
 	exports.getOperation(args, res, next); 

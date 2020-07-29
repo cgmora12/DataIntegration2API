@@ -63,6 +63,14 @@
 	fill: false,
 	data: [
 		dataLineChart	]
+},{
+	label: 'hospitalized_count_ventilators_in_use_covid_19_patients',
+	backgroundColor: color(colorsArray[1% colorsArray.length]).alpha(0.5).rgbString(),
+	borderColor: colorsArray[1% colorsArray.length],
+	borderWidth: 3,
+	fill: false,
+	data: [
+		dataLineChart	]
 }
 				]
 			},
@@ -109,6 +117,13 @@
 	label: 'case_count_cases_total',
 	backgroundColor: color(colorsArray[0% colorsArray.length]).alpha(0.5).rgbString(),
 	borderColor: colorsArray[0% colorsArray.length],
+	borderWidth: 3,
+	data: [
+		dataBarChart	]
+},{
+	label: 'hospitalized_count_ventilators_in_use_covid_19_patients',
+	backgroundColor: color(colorsArray[1% colorsArray.length]).alpha(0.5).rgbString(),
+	borderColor: colorsArray[1% colorsArray.length],
 	borderWidth: 3,
 	data: [
 		dataBarChart	]
@@ -183,6 +198,44 @@ var configPie1 = {
 						window.chartColors.green,
 						window.chartColors.blue,
 					],
+					label: 'publisher_publisher'
+				}				],
+				labels: [
+					labelsPieChart
+				]
+			},
+			options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Chart.js Pie Chart (publisher_publisher)'
+				}			}
+		};
+
+</script>
+
+<button id="pieChartButton1">PieChart publisher_publisher</button>
+
+<script>
+
+		document.getElementById('pieChartButton1').addEventListener('click', function() {
+			var pie = document.getElementById('chart-area').getContext('2d');
+			window.myPie = new Chart(pie, configPie1);
+		});
+
+var configPie2 = {
+			type: 'pie',
+			data: {
+				datasets: [{
+					data: [ 						dataPieChart
+					],
+					backgroundColor: [
+						window.chartColors.red,
+						window.chartColors.orange,
+						window.chartColors.yellow,
+						window.chartColors.green,
+						window.chartColors.blue,
+					],
 					label: 'case_count_cases_total'
 				}				],
 				labels: [
@@ -199,16 +252,16 @@ var configPie1 = {
 
 </script>
 
-<button id="pieChartButton1">PieChart case_count_cases_total</button>
+<button id="pieChartButton2">PieChart case_count_cases_total</button>
 
 <script>
 
-		document.getElementById('pieChartButton1').addEventListener('click', function() {
+		document.getElementById('pieChartButton2').addEventListener('click', function() {
 			var pie = document.getElementById('chart-area').getContext('2d');
-			window.myPie = new Chart(pie, configPie1);
+			window.myPie = new Chart(pie, configPie2);
 		});
 
-var configPie2 = {
+var configPie3 = {
 			type: 'pie',
 			data: {
 				datasets: [{
@@ -237,13 +290,51 @@ var configPie2 = {
 
 </script>
 
-<button id="pieChartButton2">PieChart date_of_interest_date</button>
+<button id="pieChartButton3">PieChart date_of_interest_date</button>
 
 <script>
 
-		document.getElementById('pieChartButton2').addEventListener('click', function() {
+		document.getElementById('pieChartButton3').addEventListener('click', function() {
 			var pie = document.getElementById('chart-area').getContext('2d');
-			window.myPie = new Chart(pie, configPie2);
+			window.myPie = new Chart(pie, configPie3);
+		});
+
+var configPie4 = {
+			type: 'pie',
+			data: {
+				datasets: [{
+					data: [ 						dataPieChart
+					],
+					backgroundColor: [
+						window.chartColors.red,
+						window.chartColors.orange,
+						window.chartColors.yellow,
+						window.chartColors.green,
+						window.chartColors.blue,
+					],
+					label: 'hospitalized_count_ventilators_in_use_covid_19_patients'
+				}				],
+				labels: [
+					labelsPieChart
+				]
+			},
+			options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Chart.js Pie Chart (hospitalized_count_ventilators_in_use_covid_19_patients)'
+				}			}
+		};
+
+</script>
+
+<button id="pieChartButton4">PieChart hospitalized_count_ventilators_in_use_covid_19_patients</button>
+
+<script>
+
+		document.getElementById('pieChartButton4').addEventListener('click', function() {
+			var pie = document.getElementById('chart-area').getContext('2d');
+			window.myPie = new Chart(pie, configPie4);
 		});
 
 

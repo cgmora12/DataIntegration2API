@@ -4,18 +4,19 @@
   "description": "Obtaining the COVIDminus19_Daily_Counts_of_Cases__Hospitalizations__and_DeathscsvCOVIDminus19_Hospital_Capacity_MetricscsvCOVIDminus19_Daily_Cases_and_Deathscsvcsv",
   "main": "index.js",
   "scripts": {
-    "prestart": "npm install",
-    "start": "node index.js"
-  },
+	"prestart": "npm install",
+	"start": "node index.js"
+  },  
   "keywords": [
     "swagger"
   ],
   "license": "Apache-2.0",
   "private": true,
   "dependencies": {
+	"papaparse": "^4.3.7",
     "connect": "^3.2.0",
     "js-yaml": "^3.3.0",
-    "papaparse": "^4.3.7",
-    "swagger-tools": "git+https://github.com/cgmora12/swagger-tools.git"
+    "swagger-tools": "0.10.1"
   }
 }
+

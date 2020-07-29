@@ -59,7 +59,7 @@ import com.univocity.parsers.csv.CsvParserSettings;
 public class TableUnion2API {
     
     // Threshold to decide if two columns are similar enough to perform UNION or JOIN
-    public static float similarity_threshold_for_columns = 0.8f;
+    public static float similarity_threshold_for_columns = 0.75f;
 
     // Operation chosen by user (union or join)
     public static String operationChosen = "";
