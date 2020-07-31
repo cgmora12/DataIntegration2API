@@ -15,6 +15,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -93,6 +94,26 @@ public class TableUnion2API {
             	if(args[2].contains("api")) {
             		generateAPI = true;
             	}
+            }
+            if(args.length == 4) {
+            	// args: similarity.json join 0.95 api/n
+            	if(args[3].contains("api")) {
+            		generateAPI = true;
+            	}
+            	String thresholdInput = args[2].replaceAll(",", ".");
+    	    	if(thresholdInput.length() > 0) {
+    	    		float threshold = similarity_threshold_for_columns;
+    	    		try {
+    	    			threshold = Float.parseFloat(thresholdInput);
+    	    		} catch(NumberFormatException e) {
+    	    			e.printStackTrace();
+    	    		}
+    		    	if(threshold > 0 && threshold <= 1) {
+    			    	similarity_threshold_for_columns = threshold;
+    		    	} else {
+    		    		System.out.println("The threshold must be between 0 and 1, using default threshold): " + similarity_threshold_for_columns);
+    		    	}
+    	    	}
             }
         } else {
             // no args: ask them individually
@@ -274,6 +295,7 @@ public class TableUnion2API {
             fields1 = parserNew.parseNext();
             CsvFormat format = parserNew.getDetectedFormat();
             csvSeparatorAux1 = format.getDelimiter();
+            //System.out.println("CSV delimiter: " + csvSeparatorAux1);
             parserNew.stopParsing();
         } catch(Exception e) {
             e.printStackTrace();
@@ -287,6 +309,7 @@ public class TableUnion2API {
             fields2 = parserNew2.parseNext();
             CsvFormat format2 = parserNew2.getDetectedFormat();
             csvSeparatorAux2 = format2.getDelimiter();
+            //System.out.println("CSV delimiter: " + csvSeparatorAux1);
             parserNew2.stopParsing();
         } catch(Exception e) {
             e.printStackTrace();
@@ -352,6 +375,7 @@ public class TableUnion2API {
 
           TextFileInputField[] inputFields1 = new TextFileInputField[ fields1.length ];
           int idx = 0;
+          Set<String> fields1keysNotNormalized = new HashSet<String>();
           for (String fieldName : fields1) {
             TextFileInputField field = new TextFileInputField();
             /*field.setCurrencySymbol( fileInfo.getCurrencySymbol() );
@@ -362,6 +386,9 @@ public class TableUnion2API {
             field.setIgnored( column.isIgnore() );
             field.setLength( column.getLength() );*/
             field.setName(fieldName);
+	      	  if(fields1keys.contains(normalize(fieldName))) {
+	    		  fields1keysNotNormalized.add(fieldName);
+	    	  }
             /*field.setNullString( fileInfo.getNullStr() );
             field.setPrecision( column.getPrecision() );
             field.setRepeated( false );
@@ -393,7 +420,7 @@ public class TableUnion2API {
           //String sortPluginId = registry.getPluginId(StepPluginType.class, sortMeta);
 
           String[] sortFields = null;
-          sortFields = fields1keys.toArray(new String[fields1keys.size()]);
+          sortFields = fields1keysNotNormalized.toArray(new String[fields1keysNotNormalized.size()]);
           
           boolean[] ascendingOrderFields = new boolean[sortFields.length];
           for(int i = 0; i < ascendingOrderFields.length; i++) {
@@ -459,6 +486,7 @@ public class TableUnion2API {
 
           TextFileInputField[] inputFields2 = new TextFileInputField[ fields2.length ];
           int idx2 = 0;
+          Set<String> fields2keysNotNormalized = new HashSet<String>();        	  
           for (String fieldName2 : fields2) {
             TextFileInputField field2 = new TextFileInputField();
             /*field.setCurrencySymbol( fileInfo.getCurrencySymbol() );
@@ -469,6 +497,9 @@ public class TableUnion2API {
             field.setIgnored( column.isIgnore() );
             field.setLength( column.getLength() );*/
             field2.setName(fieldName2);
+            if(fields2keys.contains(normalize(fieldName2))) {
+      		  fields2keysNotNormalized.add(fieldName2);
+      	  	}
             /*field.setNullString( fileInfo.getNullStr() );
             field.setPrecision( column.getPrecision() );
             field.setRepeated( false );
@@ -501,7 +532,7 @@ public class TableUnion2API {
           //String sortPluginId2 = registry.getPluginId(StepPluginType.class, sortMeta2);
 
           String[] sortFields2 = null;
-          sortFields2 = fields2keys.toArray(new String[fields2keys.size()]);
+          sortFields2 = fields2keysNotNormalized.toArray(new String[fields2keysNotNormalized.size()]);
           
           boolean[] ascendingOrderFields2 = new boolean[sortFields2.length];
           for(int i = 0; i < ascendingOrderFields2.length; i++) {
@@ -648,8 +679,10 @@ public class TableUnion2API {
 	            field2.setLength(-1);
 	            field2.setPrecision(-1);
 	
-	            textFields[idy] = field2;
-	            idy++;    		
+	            if(idy < textFields.length) {
+	            	textFields[idy] = field2;
+		            idy++;  
+	            }  		
         	}
           }
           
@@ -758,10 +791,15 @@ public class TableUnion2API {
 	                for(int resultsIndex = 0; (resultsIndex < table1columnPositions.size())
 	                        && (resultsIndex < table2columnPositions.size()); resultsIndex++) {
 	                    //TODO: avoid repeated words
+	                	if(cleanString(file1[table1columnPositions.get(resultsIndex)]).replaceAll(",", ".") == 
+	                			cleanString(file2[table2columnPositions.get(resultsIndex)]).replaceAll(",", ".")) {
+	                		line1 += cleanString(file1[table1columnPositions.get(resultsIndex)]).replaceAll(",", ".");
+	                	} else {
 	                    line1 += cleanString(file1[table1columnPositions.get(resultsIndex)]).replaceAll(",", ".")
 	                            + "_"
 	                            + cleanString(file2[table2columnPositions.get(resultsIndex)]).replaceAll(",", ".") 
 	                            + ",";
+	                	}
 	                }
 	                /*if(join) {
 	                    for(int resultsIndex = 0; resultsIndex < table1otherColumnPositions.size(); resultsIndex++) {
@@ -929,15 +967,16 @@ public class TableUnion2API {
     private static String normalize(String s) {
         // Split camelCased-words
         String res = "";
-        for (String w : s.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])")) {
-            res += w + " ";
-        }
-        
-        //Split words including '-', '_' and '/', remove punctuation and extra spaces, and lowercase
-        res = res.replaceAll("[-_/!\"#$%&'()*+, -./:;<=>?@\\[\\]\\^_`{|}~]", " ") 
-                .replaceAll("( +)"," ").trim().toLowerCase();
+        if(s != null && s.length()>0) {
+	        for (String w : s.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])")) {
+	            res += w + " ";
+	        }
+	        
+	        //Split words including '-', '_' and '/', remove punctuation and extra spaces, and lowercase
+	        res = res.replaceAll("[-_/!\"#$%&'()*+, -./:;<=>?@\\[\\]\\^_`{|}~]", " ") 
+	                .replaceAll("( +)"," ").trim().toLowerCase();
             
-
+        }
         return res;
     }
     
