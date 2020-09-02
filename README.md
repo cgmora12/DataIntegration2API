@@ -20,16 +20,14 @@ Java
 ```
 
 The following Python libraries are required:
-
-numpy (https://pypi.org/project/numpy/)\
-python-Levenshtein (https://pypi.org/project/python-Levenshtein/)\
-scipy (https://pypi.org/project/scipy/)\
-gensim (https://pypi.org/project/gensim/)
+- numpy (https://pypi.org/project/numpy/)
+- python-Levenshtein (https://pypi.org/project/python-Levenshtein/)
+- scipy (https://pypi.org/project/scipy/)
+- gensim (https://pypi.org/project/gensim/)
 
 The pre-trained models are available in the following links:
-
-fastText: https://fasttext.cc/docs/en/english-vectors.html\
-Google word2vec: https://code.google.com/archive/p/word2vec/
+- fastText: https://fasttext.cc/docs/en/english-vectors.html
+- Google word2vec: https://code.google.com/archive/p/word2vec/
 
 The WikiTables files to build the task-specific model are available here: http://websail-fe.cs.northwestern.edu/TabEL/
 
@@ -81,8 +79,10 @@ Once calculated the similarity, in order to perform the integration and generate
 java -jar tableunion.jar similarity_data.json operation threshold api
 ```
 
-The operation parameter is optional and can be union or join, depending on user preferences.\
-The threshold parameter is optional and must be a number between 0 and 1 (default is 0.75).\
+The operation parameter is optional and can be union or join, depending on user preferences.
+
+The threshold parameter is optional and must be a number between 0 and 1 (default is 0.75).
+
 The api parameter is optional and is used to create or not a web api to access integrated data.
 
 
