@@ -6,7 +6,7 @@ In order to solve the problem of accessing and reusing open data, our approach a
 
 ## Getting Started
 
-First, to obtain similarity data between different CSV files, use the python program in the similarity folder. Then, use the tableunion.jar file in order generate APIs from CSV files and similarity data.
+First, to obtain similarity data between different CSV files, use the python program in the similarity folder. Then, use the tableunion.jar file in order generate APIs from CSV files and similarity data. The Python table similarity module can be run as a standalone program to obtain the similarity between a set of tables, regardless of their later use for API generation.
 
 
 ### Prerequisites
@@ -41,7 +41,7 @@ Download the table_similarity module and run the following commands:
 - To install the libraries required: $ pip install -r requirements.txt
 - To install the table_similarity module: $ python setup.py install
 
-### Configuring and running the module
+### Configuring and running the similarity module
 
 The module reads the parameters from a configuration file (“config.ini”). This file contains four sections to define the model and alpha values (“Setup”), the directories where the models and input tables are stored (“Directories”), the output file with the similarity values (“Files”) and the filenames of the models (“Models”). This is an example of “config.ini”:
 
@@ -56,7 +56,7 @@ models = ./models
 tables = ./tables
 
 [Files]
-output = ./similarity.json
+output = ./similarity_data.json
 
 [Models]
 wikitables_names = wikitables_names.bin
