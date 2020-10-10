@@ -97,7 +97,7 @@ In order to test our approach, we have selected different datasets:
 - Street lights (https://data.gov.uk/dataset/3b1b594f-e1a3-495b-a6c0-221fff9d1ffd/street-lights)
 - International payments (https://open.canada.ca/data/en/dataset/823899ab-3cca-4484-a420-13bf0d0d0226)
 - Traffic state (https://datos.gob.es/es/catalogo/l01080193-informacion-del-estado-del-transito-en-los-tramos-de-la-ciudad-de-barcelona)
-- Voter data (https://catalog.data.gov/dataset/voter-history-data)
+- Voter data (https://data.oregon.gov/api/views/7zsb-k53q/rows.csv)
 - Wholesale trade sales (https://open.canada.ca/data/en/dataset/45d747d8-8abf-49d9-a76c-84c01156c04b)
 - Employee earnings (https://open.canada.ca/data/en/dataset/d4c86aaf-6d6b-4da8-a41e-6f96dbec982e)
 
